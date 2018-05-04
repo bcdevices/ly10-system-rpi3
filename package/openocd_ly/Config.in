@@ -1,0 +1,9 @@
+config BR2_PACKAGE_OPENOCD_LY
+        bool "openocd_ly"
+        depends on BR2_TOOLCHAIN_HAS_THREADS #
+        select BR2_PACKAGE_LIBUSB
+        select BR2_PACKAGE_LIBUSB_COMPAT
+        select BR2_PACKAGE_LIBFTD
+        help
+           OpenOCD
+

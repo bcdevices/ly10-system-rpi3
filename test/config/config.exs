@@ -2,8 +2,8 @@ use Mix.Config
 
 # Repository specific configuration
 
-system = :nerves_system_rpi3
-platform = "rpi3"
+system = :ly10_system_rpi3
+platform = "ly10_rpi3"
 arch = "arm"
 
 app_part_devparth = "/dev/mmcblk0p3"
