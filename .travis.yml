@@ -1,0 +1,26 @@
+sudo: required
+language: c
+compiler: gcc
+services:
+- docker
+script: make docker
+cache:
+  directories:
+  - "$HOME/.nerves/dl"
+before_deploy:
+- cd dist
+deploy:
+  skip_cleanup: true
+  provider: s3
+  region: us-west-1
+  access_key_id: AKIAITDPRS7GNAPCDOAA
+  secret_access_key:
+    secure: "sNZWOD+Ju+7Ia+TvywGov3b7/+Irs7VTZ4jgvWT3fiSAwO4ELAwPeIF4PpaDIUP889tgX2v3gLrcv5LrEQUkiQf7wtFEQ9KDVJp4iXjg2CgBLtW38y2EJF/3IPmopFXtZ1ycKzSsSwnnv+urDzZEcbPuSKhbJ3xCIa1RcM9VKSVKxdKahmsl9MY4x3ibZ6pFrMqRL5z/mLjD1033JKJ/ciCrie5oI22oRCskFprtrT+qHHDzzosbw2n+NqKgV8KGPcElf0EO1Y5io4/QiIaFYARb4uj5ks0gVkMi9AP9iN+A+8V2h74Pz6qK2zQZsAunOonD/sjcYEfNs07u6JvLQ3daXsd5C0cG8G5wG9TOnCZ9mQyamwXWuvRIcojlkGZDdZwbp+ze6xyHDertw5MlFXWeWTsE9hGguB3FRhwr5/DLODbjcP8Hgm018jdte3PnM1KQHI33v4PO3oHRWO6zZoGkyI4s479HWqlGQuNyi8xxO/myAp8eLBRXZOOEgA5lBUPGN1qPFol/qY2d43q7iJwnu5jIe7e7e+amZBvesxD1t5r4kJWgjieUqk/JKtsw6Yd1a7inlTJVDnVcBwrWkMEUMeRJroTPKokD7Z8EDrSh/1Jxvw0YHLcpzRa7FBYP2HnJpNEGEiHlbREymEvN1vAfboAV/rcePNQ4W0SVrEA="
+  bucket: ly-archive.iotcloud.io
+  acl: public_read
+  on:
+    repo: bcdevices/ly10-system-rpi3
+    all_branches: true
+notifications:
+  slack:
+    secure: rLO0GQsAaXrIdJ4u2vJBoNDw5na7ijNRjEkeeR1QaYQWHeO8XqVu9SmCddXgaU2cyyoEjXgLsg4CBaTuNzhMO0RBg1k3eLK7/1zr6DGZZvi7p3GviqqNoWdKoieA+z/rDs0fwUFUeG6PfOq3c8g8vTjRhm4qmep9ZzMPyPhHZMlJbzqt8hUbFIKV2AXFclqpdgKObR4l+0Oc/9bXQYi4Rm20nUfQrwAFoyhE4t+18QMbAbiat3ZrkfMM+dIu1OJL23W6DjU8kQe8ewCDlpgyfwH9l9z49an1oxfx6phJVfM1/jQhRe9S1pIKrwzeLXQ6qkOapN4IkcJWRSC1sXjWyMlgcycDnA4u1vomJZ1aO8PWT/kMVnCEaJbCsWY86Avody97kmdC6ayxega26oBaXntNN+2C7Z07l3/DbHzqNCO7ts+s+gTseKk7zDo84jh+rIauGHy/7S2HCLtOKyTUOOnw3ZajzWGM/qhsYtvw/EyjaTPYN+JETQ0jHGsVhs0aI+e3NdhY+CR4Y91tWC/VUWgfmYPV0fr7ie7Pstz21QSwMCfM0d96PDVUKD7+CUg/2uZ6XRB+zYpZzMefvj8t6VsDL8cGtRKxxeitPzm2eQK8wHQwmqNY4RF2+Dw32/oUXU5uEFVegBkmkwbXraQwrAT8j95obCPmW4qgsk3EJ6A=
