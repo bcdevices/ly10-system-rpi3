@@ -18,7 +18,7 @@ deploy:
   bucket: ly-archive.iotcloud.io
   acl: public_read
   on:
-    repo: bcdevices/sc01-system-rpi3
+    repo: bcdevices/ly10-system-rpi3
     all_branches: true
 notifications:
   slack:
