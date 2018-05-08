@@ -1,7 +1,7 @@
-defmodule NervesSystemRpi3.MixProject do
+defmodule LY10SystemRpi3.MixProject do
   use Mix.Project
 
-  @app :nerves_system_rpi3
+  @app :ly10_system_rpi3
   @version Path.join(__DIR__, "VERSION")
            |> File.read!()
            |> String.trim()
@@ -10,7 +10,7 @@ defmodule NervesSystemRpi3.MixProject do
     [
       app: @app,
       version: @version,
-      elixir: "~> 1.4",
+      elixir: "~> 1.6",
       compilers: Mix.compilers() ++ [:nerves_package],
       nerves_package: nerves_package(),
       description: description(),
@@ -26,7 +26,7 @@ defmodule NervesSystemRpi3.MixProject do
   end
 
   defp bootstrap(args) do
-    System.put_env("MIX_TARGET", "rpi3")
+    System.put_env("MIX_TARGET", "ly10_rpi3")
     Application.start(:nerves_bootstrap)
     Mix.Task.run("loadconfig", args)
   end
@@ -35,7 +35,7 @@ defmodule NervesSystemRpi3.MixProject do
     [
       type: :system,
       artifact_sites: [
-        {:github_releases, "nerves-project/#{@app}"}
+        {:prefix, "https://ly-archive.iotcloud.io/"}
       ],
       platform: Nerves.System.BR,
       platform_config: [
@@ -57,21 +57,23 @@ defmodule NervesSystemRpi3.MixProject do
 
   defp description do
     """
-    Nerves System - Raspberry Pi 3 B / B+
+    LY10 Nerves System - Raspberry Pi 3 B / B+
     """
   end
 
   defp package do
     [
-      maintainers: ["Frank Hunleth", "Justin Schneck"],
+      maintainers: ["Blue Clover Devices"],
       files: package_files(),
       licenses: ["Apache 2.0"],
-      links: %{"Github" => "https://github.com/nerves-project/#{@app}"}
+      links: %{"Github" => "https://github.com/bcdevices/ly10-system-rpi3"}
     ]
   end
 
   defp package_files do
     [
+      "package",
+      "external.mk",
       "LICENSE",
       "mix.exs",
       "nerves_defconfig",
