@@ -20,4 +20,10 @@ OPENOCD_LY_CONF_OPTS += --disable-shared
 OPENOCD_LY_CONF_OPTS += --enable-dummy
 OPENOCD_LY_CONF_OPTS += --disable-werror
 
+define OPENOCD_LY_TARGET_RENAME
+	mv $(TARGET_DIR)/usr/bin/openocd $(TARGET_DIR)/usr/bin/openocd_ly
+endef
+
+OPENOCD_LY_POST_INSTALL_TARGET_HOOKS += OPENOCD_LY_TARGET_RENAME
+
 $(eval $(autotools-package))
