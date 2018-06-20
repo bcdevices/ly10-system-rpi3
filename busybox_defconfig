@@ -1,7 +1,7 @@
 #
 # Automatically generated make config: don't edit
 # Busybox version: 1.27.2
-# Wed Jun 20 12:08:07 2018
+# Wed Jun 20 16:45:40 2018
 #
 CONFIG_HAVE_DOT_CONFIG=y
 
@@ -327,8 +327,8 @@ CONFIG_UNAME_OSNAME=""
 # CONFIG_UUDECODE is not set
 # CONFIG_BASE64 is not set
 # CONFIG_UUENCODE is not set
-# CONFIG_WC is not set
-# CONFIG_FEATURE_WC_LARGE is not set
+CONFIG_WC=y
+CONFIG_FEATURE_WC_LARGE=y
 # CONFIG_WHO is not set
 # CONFIG_W is not set
 # CONFIG_USERS is not set
