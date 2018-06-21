@@ -76,6 +76,8 @@ defmodule LY10SystemRpi3.MixProject do
       "external.mk",
       "LICENSE",
       "mix.exs",
+      "patches",
+      "busybox_defconfig",
       "nerves_defconfig",
       "README.md",
       "VERSION",
