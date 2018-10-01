@@ -1,5 +1,98 @@
 # Changelog
 
+## v1.4.1
+
+* Bug fixes
+  * Trim Linux module list to remove warnings on OSX builds. This makes a few
+    other changes to the module list to remove some difficult to use modules on
+    Nerves projects.
+
+## v1.4.0
+
+This release contains various updates to provisioning variables and data.
+
+**Host requirements**
+
+Building firmware using this system requires `fwup` to be updated on your
+host computer to at least `v1.2.5`. The target minimum version requirement
+has not changed from `0.15.0`.
+
+**Serial numbers**
+
+Device serial numbers are now set using `NERVES_SERIAL_NUMBER` instead of
+`SERIAL_NUMBER`. This is to reduce ambiguity on the source of the serial
+by name spacing it along side other Nerves variables. The U-Boot environment
+key has also changed from `serial_number` to `nerves_serial_number`. The
+erlinit.config has been updated to provide backwards compatibility for setting
+the hostname from the serial number by checking for `nerves_serial_number`
+and falling back to `serial_number`.
+
+**Custom provisioning**
+
+Provisioning data is applied at the time of calling the `fwup` task `complete`.
+The `complete` task is executed when writing the firmware to the target disk.
+During this time, `fwup` will include the contents of a provisioning file
+located at `${NERVES_SYSTEM}/images/fwup_include/provisioning.conf`. By default,
+this file only sets `nerves_serial_number`. You can add additional provisioning
+data by overriding the location of this file to include your own by setting
+the environment variable `NERVES_PROVISIONING`. If you override this variable
+you will be responsible for also setting `nerves_serial_number`.
+
+* Updated dependencies
+  * [nerves_system_br v1.4.5](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.4.5)
+
+## v1.3.0
+
+This release upgrades gcc from version 6.3.0 to 7.3.0. See the toolchain release
+notes for more information.
+
+* Updated dependencies
+  * [nerves_system_br v1.4.1](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.4.1)
+  * [nerves_toolchain_arm_unknown_linux_gnueabihf v1.1.0](https://github.com/nerves-project/toolchains/releases/tag/v1.1.0)
+
+## v1.2.1
+
+* Bug Fixes
+  * Fix Raspberry Pi 3 B+ support by adding missing dtb file.
+
+* Updated dependencies
+  * [nerves_system_br v1.3.2](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.3.2)
+
+## v1.2.0
+
+This release updates Erlang to OTP 21.0
+
+* Updated dependencies
+  * [nerves_system_br v1.3.0](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.3.0)
+
+## v1.1.1
+
+This release fixes some issues and adds firmware UUID support. This support can
+be used to unambiguously know what's running on a device.
+
+* Updated dependencies
+  * [nerves_system_br v1.2.2](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.2.2)
+
+* Bug fixes
+  * Empty serial numbers stored in the U-Boot environment would be used instead
+    of reverting to devices IDs built into the CPU or board.
+  * It wasn't possible to enable QtWebEngine (needed for kiosk apps)
+
+## v1.1.0
+
+This release adds official support for provisioning serial numbers to devices.
+Other information can be provisioned in a similar manner. See the README.md for
+details.
+
+Buildroot was also updated to 2018.05. Be sure to review the `nerves_system_br`
+link for the changes in the embedded Linux components.
+
+* Updated dependencies
+  * [nerves_system_br v1.2.0](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.2.0)
+
+* New features
+  * More `wpa-supplicant` features were enabled to support more WiFi use-cases
+
 ## v1.0.0
 
 This release is nearly identical to rc.2 except with the deps bump to 1.0 and
