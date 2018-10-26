@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-OPENOCD_LY_VERSION = 6d390e1b2a393505b38e1d0fcd741cd0b1cf92aa
+OPENOCD_LY_VERSION = d0be1630dc080b0c881830fa28bf2ccfe7850bb8
 OPENOCD_LY_SITE = git://github.com/ntfreak/openocd
 OPENOCD_LY_GIT_SUBMODULES = YES
 
