@@ -19,6 +19,7 @@ This is the base Nerves System configuration for the Raspberry Pi 3 Model B.
 | ADC                  | No                              |
 | PWM                  | Yes, but no Elixir support      |
 | UART                 | 1 available - `ttyAMA0`         |
+| Display              | HDMI or 7" RPi Touchscreen      |
 | Camera               | Yes - via rpi-userland          |
 | Ethernet             | Yes                             |
 | WiFi                 | Yes - Nerves.Network            |
@@ -70,6 +71,30 @@ example, to force audio out the HDMI port, run:
 
 Change the last argument to `amixer` to `1` to output to the stereo output jack.
 
+## Linux's preempt_rt patches
+
+If you need better real-time performance from the Linux kernel, the `preempt_rt`
+patch set may help. Be aware that we do not test with the patches so this may
+not work. To enable it, make a custom system using this one as a base and add
+the following to the `nerves_defconfig`:
+
+```text
+BR2_LINUX_KERNEL_PATCH="http://cdn.kernel.org/pub/linux/kernel/projects/rt/4.14/patch-4.14.71-rt44.patch.xz"
+```
+
+Please verify the patch version since these instructions may be out-of-date.
+
+Next, update the Linux configuration to use it. Review the Nerves documentation
+for running `make linux-menuconfig` and enable `PREEMPT_RT_FULL`. Alternately,
+make the following change to the Linux configuration:
+
+```text
+-CONFIG_PREEMPT=y
++CONFIG_PREEMPT_RT_FULL=y
+ ```
+
+Build the system and you should now have a preempt_rt kernel.
+
 ## Provisioning devices
 
 This system supports storing provisioning information in a small key-value store
@@ -84,7 +109,7 @@ Keys used by this system are:
 
 Key                    | Example Value     | Description
 :--------------------- | :---------------- | :----------
-`nerves_serial_number` | "1234578"`        | By default, this string is used to create unique hostnames and Erlang node names. If unset, it defaults to part of the Raspberry Pi's device ID.
+`nerves_serial_number` | `"12345678"`      | By default, this string is used to create unique hostnames and Erlang node names. If unset, it defaults to part of the Raspberry Pi's device ID.
 
 The normal procedure would be to set these keys once in manufacturing or before
 deployment and then leave them alone.
@@ -93,7 +118,7 @@ For example, to provision a serial number on a running device, run the following
 and reboot:
 
 ```elixir
-iex> cmd("fw_setenv nerves_serial_number 1234")
+iex> cmd("fw_setenv nerves_serial_number 12345678")
 ```
 
 This system supports setting the serial number offline. To do this, set the
@@ -101,7 +126,7 @@ This system supports setting the serial number offline. To do this, set the
 programming MicroSD cards using `fwup`, the commandline is:
 
 ```sh
-sudo NERVES_SERIAL_NUMBER=1234 fwup path_to_firmware.fw
+sudo NERVES_SERIAL_NUMBER=12345678 fwup path_to_firmware.fw
 ```
 
 Serial numbers are stored on the MicroSD card so if the MicroSD card is

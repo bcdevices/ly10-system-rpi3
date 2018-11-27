@@ -37,6 +37,7 @@ defmodule LY10SystemRpi3.MixProject do
       artifact_sites: [
         {:prefix, "https://ly-archive.iotcloud.io/"}
       ],
+      build_runner_opts: build_runner_opts(),
       platform: Nerves.System.BR,
       platform_config: [
         defconfig: "nerves_defconfig"
@@ -47,7 +48,7 @@ defmodule LY10SystemRpi3.MixProject do
 
   defp deps do
     [
-      {:nerves_system_br, github: "bcdevices/nerves_system_br", tag: "v1.5.2", runtime: false},
+      {:nerves_system_br, github: "bcdevices/nerves_system_br", tag: "v1.5.4", runtime: false},
       {:nerves, "~> 1.3", runtime: false},
       {:nerves_toolchain_arm_unknown_linux_gnueabihf, "1.1.0", runtime: false},
       {:nerves_system_linter, "~> 0.3.0", runtime: false},
@@ -97,5 +98,13 @@ defmodule LY10SystemRpi3.MixProject do
   # Copy the images referenced by docs, since ex_doc doesn't do this.
   defp copy_images(_) do
     File.cp_r("assets", "doc/assets")
+  end
+
+  defp build_runner_opts() do
+    if primary_site = System.get_env("BR2_PRIMARY_SITE") do
+      [make_args: ["BR2_PRIMARY_SITE=#{primary_site}"]]
+    else
+      []
+    end
   end
 end
