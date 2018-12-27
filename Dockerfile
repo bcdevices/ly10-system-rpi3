@@ -23,10 +23,10 @@ MAINTAINER Blue Clover Devices DevTeam
 # Setup environment
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM=xterm
-ENV ERLANG_OTP_VERSION=21.1
+ENV ERLANG_OTP_VERSION=21.0
 ENV ERLANG_PKG='erlang-solutions_1.0_all.deb'
 ENV ERLANG_URL="https://packages.erlang-solutions.com/${ERLANG_PKG}"
-ENV ELIXIR_VERSION=1.7.3
+ENV ELIXIR_VERSION=1.7.4
 ENV PATH="/usr/local/elixir/bin:${PATH}"
 
 #Setup locale
