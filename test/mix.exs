@@ -26,7 +26,11 @@ defmodule Test.MixProject do
   def application, do: []
 
   defp bootstrap(args) do
+<<<<<<< HEAD
     System.put_env("MIX_TARGET", "ly10_rpi3")
+=======
+    set_target()
+>>>>>>> 66ccc22... Update to use Elixir 1.8
     Application.start(:nerves_bootstrap)
     Mix.Task.run("loadconfig", args)
   end
@@ -37,5 +41,13 @@ defmodule Test.MixProject do
       {:ly10_system_rpi3, path: "../", runtime: false},
       {:nerves_system_test, github: "nerves-project/nerves_system_test"}
     ]
+  end
+
+  defp set_target() do
+    if function_exported?(Mix, :target, 1) do
+      apply(Mix, :target, [:target])
+    else
+      System.put_env("MIX_TARGET", "target")
+    end
   end
 end
