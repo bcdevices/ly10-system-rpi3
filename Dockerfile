@@ -26,7 +26,7 @@ ENV TERM=xterm
 ENV ERLANG_OTP_VERSION=21.0
 ENV ERLANG_PKG='erlang-solutions_1.0_all.deb'
 ENV ERLANG_URL="https://packages.erlang-solutions.com/${ERLANG_PKG}"
-ENV ELIXIR_VERSION=1.7.4
+ENV ELIXIR_VERSION=1.8.1-otp-21
 ENV PATH="/usr/local/elixir/bin:${PATH}"
 
 #Setup locale
@@ -99,8 +99,8 @@ RUN curl -o "/tmp/${ERLANG_PKG}" ${ERLANG_URL} \
     "esl-erlang=1:${ERLANG_OTP_VERSION}"
 
 #Install Elixir
-RUN wget https://github.com/elixir-lang/elixir/releases/download/v$ELIXIR_VERSION/Precompiled.zip && \
-  unzip -d /usr/local/elixir Precompiled.zip
+RUN wget https://repo.hex.pm/builds/elixir/v$ELIXIR_VERSION.zip && \
+      unzip -d /usr/local/elixir v$ELIXIR_VERSION.zip
 
 #Create Work Directory
 RUN mkdir -p /nerves-system
@@ -110,3 +110,7 @@ WORKDIR /nerves-system
 
 # COPY
 COPY . /nerves-system
+
+RUN mkdir -p /root/local
+RUN mkdir -p /root/empty
+

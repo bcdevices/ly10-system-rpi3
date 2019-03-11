@@ -48,8 +48,8 @@ defmodule LY10SystemRpi3.MixProject do
 
   defp deps do
     [
-      {:nerves, "~> 1.3", runtime: false},
-      {:nerves_system_br, "1.6.8", runtime: false},
+      {:nerves_system_br, "~> 1.7", runtime: false},
+      {:nerves, "~> 1.4", runtime: false},
       {:nerves_toolchain_arm_unknown_linux_gnueabihf, "1.1.0", runtime: false},
       {:nerves_system_linter, "~> 0.3.0", runtime: false},
       {:ex_doc, "~> 0.18", only: [:dev, :test], runtime: false}
@@ -113,7 +113,7 @@ defmodule LY10SystemRpi3.MixProject do
     if function_exported?(Mix, :target, 1) do
       apply(Mix, :target, [:target])
     else
-      System.put_env("MIX_TARGET", "target")
+      System.put_env("MIX_TARGET", "ly10_rpi3")
     end
   end
 end

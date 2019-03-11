@@ -26,11 +26,7 @@ defmodule Test.MixProject do
   def application, do: []
 
   defp bootstrap(args) do
-<<<<<<< HEAD
-    System.put_env("MIX_TARGET", "ly10_rpi3")
-=======
     set_target()
->>>>>>> 66ccc22... Update to use Elixir 1.8
     Application.start(:nerves_bootstrap)
     Mix.Task.run("loadconfig", args)
   end
@@ -47,7 +43,7 @@ defmodule Test.MixProject do
     if function_exported?(Mix, :target, 1) do
       apply(Mix, :target, [:target])
     else
-      System.put_env("MIX_TARGET", "target")
+      System.put_env("MIX_TARGET", "ly10_rpi3")
     end
   end
 end
