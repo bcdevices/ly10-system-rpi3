@@ -26,7 +26,7 @@ defmodule LY10SystemRpi3.MixProject do
   end
 
   defp bootstrap(args) do
-    System.put_env("MIX_TARGET", "ly10_rpi3")
+    set_target()
     Application.start(:nerves_bootstrap)
     Mix.Task.run("loadconfig", args)
   end
@@ -48,8 +48,8 @@ defmodule LY10SystemRpi3.MixProject do
 
   defp deps do
     [
-      {:nerves_system_br, github: "bcdevices/nerves_system_br", tag: "v1.6.5", runtime: false},
-      {:nerves, "~> 1.3", runtime: false},
+      {:nerves_system_br, "~> 1.7", runtime: false},
+      {:nerves, "~> 1.4", runtime: false},
       {:nerves_toolchain_arm_unknown_linux_gnueabihf, "1.1.0", runtime: false},
       {:nerves_system_linter, "~> 0.3.0", runtime: false},
       {:ex_doc, "~> 0.18", only: [:dev, :test], runtime: false}
@@ -106,6 +106,14 @@ defmodule LY10SystemRpi3.MixProject do
       [make_args: ["BR2_PRIMARY_SITE=#{primary_site}"]]
     else
       []
+    end
+  end
+
+  defp set_target() do
+    if function_exported?(Mix, :target, 1) do
+      apply(Mix, :target, [:target])
+    else
+      System.put_env("MIX_TARGET", "ly10_rpi3")
     end
   end
 end
