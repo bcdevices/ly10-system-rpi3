@@ -1,4 +1,0 @@
-config BR2_PACKAGE_EXODRIVER
-        bool "exodriver"
-        help
-            Exodriver for LabJack

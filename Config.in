@@ -4,5 +4,4 @@
 # Nerves or Buildroot.
 source "$NERVES_DEFCONFIG_DIR/package/openocd_ly/Config.in"
 source "$NERVES_DEFCONFIG_DIR/package/openocd_esp32/Config.in"
-source "$NERVES_DEFCONFIG_DIR/package/exodriver/Config.in"
 source "$NERVES_DEFCONFIG_DIR/package/python_esptool/Config.in"
