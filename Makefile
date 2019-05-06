@@ -67,9 +67,9 @@ dist: dist-prep build
 
 .PHONY: docker
 docker: clean
-	docker build -t "bcdevices/$(PRJTAG)" .
+	docker build -t "bcdevices/$(PRJTAG)" --network=host .
 	-docker rm -f "$(PRJTAG)"
-	docker run --name "$(PRJTAG)" -v $$HOME/.nerves/dl:/root/.nerves/dl -t "bcdevices/$(PRJTAG)" /bin/bash -c 'MIX_TARGET=ly10_rpi3 make dist'
+	docker run --name "$(PRJTAG)" --network=host -v $$HOME/.nerves/dl:/root/.nerves/dl -t "bcdevices/$(PRJTAG)" /bin/bash -c 'MIX_TARGET=ly10_rpi3 make dist'
 	-docker cp "$(PRJTAG):/nerves-system/dist" $(BASE_PATH)
 
 all: build
