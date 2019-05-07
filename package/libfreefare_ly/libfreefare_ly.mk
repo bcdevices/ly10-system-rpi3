@@ -11,6 +11,8 @@ LIBFREEFARE_LY_LICENSE = LGPL-3.0+ with exception
 LIBFREEFARE_LY_LICENSE_FILES = COPYING
 
 LIBFREEFARE_LY_AUTORECONF=YES
+LIBFREEFARE_LY_AUTORECONF_OPTS=-vis
+
 
 ifeq ($(BR2_STATIC_LIBS),y)
 # openssl needs zlib even if the libfreefare example itself doesn't
