@@ -1,0 +1,6 @@
+config BR2_PACKAGE_DEBUG_LY
+        bool "debug_ly"
+        select BR2_PACKAGE_OPENSSH
+        help
+           LY10 Local Debug support
+
