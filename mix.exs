@@ -91,6 +91,7 @@ defmodule LY10SystemRpi3.MixProject do
       "post-build.sh",
       "post-createfs.sh",
       "ramoops.dts",
+      "users_table.txt",
       "README.md",
       "VERSION"
     ]
