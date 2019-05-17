@@ -17,15 +17,11 @@
 # from Blue Clover Design.
 #
 
-FROM debian:9
+FROM erlang:21.2
 MAINTAINER Blue Clover Devices DevTeam
 
 # Setup environment
 ENV DEBIAN_FRONTEND noninteractive
-ENV TERM=xterm
-ENV ERLANG_OTP_VERSION=21.0
-ENV ERLANG_PKG='erlang-solutions_1.0_all.deb'
-ENV ERLANG_URL="https://packages.erlang-solutions.com/${ERLANG_PKG}"
 ENV ELIXIR_VERSION=1.8.1-otp-21
 ENV PATH="/usr/local/elixir/bin:${PATH}"
 
@@ -91,12 +87,6 @@ RUN set -xe \
   shared-mime-info x11-common xkb-data \
 	&& rm -rf /var/lib/apt/lists/*
 
-# Install Erlang
-RUN curl -o "/tmp/${ERLANG_PKG}" ${ERLANG_URL} \
-  && dpkg -i "/tmp/${ERLANG_PKG}" \
-  && apt-get update \
-  && apt-get -y install \
-    "esl-erlang=1:${ERLANG_OTP_VERSION}"
 
 #Install Elixir
 RUN wget https://repo.hex.pm/builds/elixir/v$ELIXIR_VERSION.zip && \
