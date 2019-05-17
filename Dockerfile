@@ -60,31 +60,7 @@ RUN set -xe \
   cpio \
   python \
   bc \
-  adwaita-icon-theme at-spi2-core dbus dconf-gsettings-backend dconf-service \
-  emacsen-common fontconfig fontconfig-config \
-  fonts-dejavu-core glib-networking glib-networking-common \
-  glib-networking-services gnome-icon-theme gsettings-desktop-schemas \
-  gtk-update-icon-cache hicolor-icon-theme libapparmor1 libatk-bridge2.0-0 \
-  libatk1.0-0 libatk1.0-data libatspi2.0-0 libavahi-client3 \
-  libavahi-common-data libavahi-common3 libcairo-gobject2 libcairo2 libcolord2 \
-  libcroco3 libcups2 libdatrie1 libdbus-1-3 libdconf1 libdrm-amdgpu1 \
-  libdrm-intel1 libdrm-nouveau2 libdrm-radeon1 libdrm2 libegl1-mesa libepoxy0 \
-  libfontconfig1 libfreetype6 libgail-common libgail18 libgbm1 \
-  libgdk-pixbuf2.0-0 libgdk-pixbuf2.0-common libgl1-mesa-dri libgl1-mesa-glx \
-  libglapi-mesa libgraphite2-3 libgtk-3-0 libgtk-3-bin libgtk-3-common \
-  libgtk2.0-0 libgtk2.0-bin libgtk2.0-common libharfbuzz0b libice6 libjbig0 \
-  libjpeg62-turbo libjson-glib-1.0-0 libjson-glib-1.0-common liblcms2-2 \
-  libllvm3.9 libnotify4 libpango-1.0-0 libpangocairo-1.0-0 libpangoft2-1.0-0 \
-  libpciaccess0 libpixman-1-0 libpng16-16 libproxy1v5 librest-0.7-0 librsvg2-2 \
-  librsvg2-common libsctp1 libsensors4 libsm6 libsoup-gnome2.4-1 libsoup2.4-1 \
-  libthai-data libthai0 libtiff5 libtxc-dxtn-s2tc libwayland-client0 \
-  libwayland-cursor0 libwayland-egl1-mesa libwayland-server0 libwxbase3.0-0v5 \
-  libwxgtk3.0-0v5 libx11-6 libx11-data libx11-xcb1 libxau6 libxcb-dri2-0 \
-  libxcb-dri3-0 libxcb-glx0 libxcb-present0 libxcb-render0 libxcb-shm0 \
-  libxcb-sync1 libxcb-xfixes0 libxcb1 libxcomposite1 libxcursor1 libxdamage1 \
-  libxdmcp6 libxext6 libxfixes3 libxi6 libxinerama1 libxkbcommon0 libxrandr2 \
-  libxrender1 libxshmfence1 libxtst6 libxxf86vm1 notification-daemon \
-  shared-mime-info x11-common xkb-data \
+  rsync \
 	&& rm -rf /var/lib/apt/lists/*
 
 
