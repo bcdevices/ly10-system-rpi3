@@ -48,9 +48,9 @@ defmodule LY10SystemRpi3.MixProject do
 
   defp deps do
     [
-      {:nerves_system_br, "~> 1.7", runtime: false},
-      {:nerves, "~> 1.4", runtime: false},
-      {:nerves_toolchain_arm_unknown_linux_gnueabihf, "1.1.0", runtime: false},
+      {:nerves, "~> 1.5.0", runtime: false},
+      {:nerves_system_br, "1.8.4", runtime: false},
+      {:nerves_toolchain_arm_unknown_linux_gnueabihf, "1.2.0", runtime: false},
       {:nerves_system_linter, "~> 0.3.0", runtime: false},
       {:ex_doc, "~> 0.18", only: [:dev, :test], runtime: false}
     ]
