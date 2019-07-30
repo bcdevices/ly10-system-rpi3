@@ -23,6 +23,12 @@ else ifeq ($(BR2_PACKAGE_LIBFTDI),y)
 AVRDUDE_LY_DEPENDENCIES += libftdi
 endif
 
+# Autoreconf requires an m4 directory to exist
+define AVRDUDE_LY_PATCH_M4
+	mkdir -p $(@D)/avrdude/m4
+endef
+AVRDUDE_LY_POST_PATCH_HOOKS += AVRDUDE_LY_PATCH_M4
+
 # if /etc/avrdude.conf exists, the installation process creates a
 # backup file, which we do not want in the context of Buildroot.
 define AVRDUDE_LY_REMOVE_BACKUP_FILE
