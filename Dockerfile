@@ -60,6 +60,7 @@ RUN set -xe \
   cpio \
   python \
   bc \
+  subversion \
   adwaita-icon-theme at-spi2-core dbus dconf-gsettings-backend dconf-service \
   emacsen-common fontconfig fontconfig-config \
   fonts-dejavu-core glib-networking glib-networking-common \
