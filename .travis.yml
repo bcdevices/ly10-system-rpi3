@@ -3,8 +3,8 @@ compiler: gcc
 services:
 - docker
 before_script:
-  -mkdir "$HOME/.nerves/dl"
-  -cp -r vendor/* "$HOME/.nerves/dl"
+  - mkdir "$HOME/.nerves/dl"
+  - cp -r vendor/* "$HOME/.nerves/dl"
 script: make docker
 cache:
   directories:
