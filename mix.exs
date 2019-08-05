@@ -35,6 +35,7 @@ defmodule LY10SystemRpi3.MixProject do
     [
       type: :system,
       artifact_sites: [
+        {:github_releases, "bcdevices/ly10-system-rpi3"},
         {:prefix, "https://ly-archive.iotcloud.io/"}
       ],
       build_runner_opts: build_runner_opts(),
