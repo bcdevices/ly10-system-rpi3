@@ -7,8 +7,6 @@ cache:
   directories:
   - "$HOME/.nerves/dl"
 before_deploy:
-- ls
-- pwd
 - cd "$TRAVIS_BUILD_DIR/dist"
 deploy:
   - provider: s3
