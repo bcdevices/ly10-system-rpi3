@@ -6,7 +6,7 @@ before_script:
   - mkdir -p "$HOME/.nerves/dl"
   - cp -r vendor/* "$HOME/.nerves/dl"
 script:
-  - rm -f "$HOME/.nerves/dl/ly10_system_rpi3-portable*.tar.gz"
+  - rm -f $HOME/.nerves/dl/ly10_system_rpi3-portable*.tar.gz
   - make docker
 cache:
   directories:
