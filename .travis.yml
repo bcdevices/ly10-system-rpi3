@@ -25,7 +25,7 @@ deploy:
   - provider: releases
     skip_cleanup: true
     file_glob: true
-    file: dist/*
+    file: "$HOME/.nerves/dl/ly10_system_rpi3-portable*"
     api_key:
       secure: MUQoemj7qwWiAlw1kWU/iBhc2wXSBUS763Yl+1bL8jtw+eQ/gv9TJ6joN4ODo2H7BVTpewcJY4ZooiYzrLteELK5POyq6gMeyY8E/FNUxW/xyikMg5lmKfz2qtuod644BbtUGcT0Ex0eANBSGyQ/ENT4wTI8XwRgCOosr5HF6HJgWOn7FBrAi5etiAlNVYdX6vo1QwreAAX3Mnq2Wf/Y8qRypab7OXTws0Hr4InTcu2kSI6HgRTSj+gphhWOlMwBb7VU4OGSWxZqRflyDDUrgvqv/llBjlW1llbnHkVFbvMClcnahUnSqhXEq4eCjgnuGxIdM+rv+Tcewwq0nhrLGSeRlAsCwlhyD3nqTYcEqafWiHg+hT+L4/fz3j9mk4L10xs4vAHlHQwN6ybHWPGj100HOqVJkKYF9KMiKfXblyYtaysXXDCG2uZdsen7XvP+uN1l/RfVZaIZ+oAHAh6cTvQq77fgJNKCHZ10NZGuaha+Enc8zbtRVvSQiolAI6fqGdCP8b8gjDhvtkkeBTQB7ezW8laW+uJXatTanLjXMj2ghe3OdjrRkf+6ngD4UWg0HI/xC7WTdCUP3QI7NrLmg/FC5rhqQz6msRctiqjkaytA5WJLFe/jD0NLDJOsTQaAtb1COQYKAgLHWRddi9DJGUERDcOBvCDuzhJHlOZQx0I=
     on:
