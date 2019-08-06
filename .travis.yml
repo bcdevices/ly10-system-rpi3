@@ -7,7 +7,9 @@ cache:
   directories:
   - "$HOME/.nerves/dl"
 before_deploy:
-- cd dist
+- ls
+- pwd
+- cd "$TRAVIS_BUILD_DIR/dist"
 deploy:
   - provider: s3
     skip_cleanup: true
