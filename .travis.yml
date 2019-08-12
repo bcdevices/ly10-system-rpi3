@@ -5,24 +5,35 @@ services:
 before_script:
   - mkdir -p "$HOME/.nerves/dl"
   - cp -r vendor/* "$HOME/.nerves/dl"
-script: make docker
+script:
+  - rm -f $HOME/.nerves/dl/ly10_system_rpi3-portable*.tar.gz
+  - make docker
 cache:
   directories:
   - "$HOME/.nerves/dl"
-before_deploy:
-- cd dist
 deploy:
-  skip_cleanup: true
-  provider: s3
-  region: us-west-1
-  access_key_id: AKIAJHCM4JILUOCKQFXA
-  secret_access_key:
-    secure: uZZQYRpV1ZfRGqbokr4fNBDi5jD+kXG7bO19dcXuzEqCIjONCG1fA+j+bPlj+MIAIAwdlc5v8PP88KLpU/f/Hz7MX9b50NVheF+6LL+g0sKJRAn/1QpaZBXtCqGK4rfzIM8rO0Nl1dQ4cHqYAFJ3Q3BbMZ9apyxb4+Pgxa5mFFhPPlk2Z6YRF79bGojNWvbMFZlL3RDso7DsLR5TwxJBJn4pudCUDWpfT5tKqrZYr2RcVvV7lgQqimY+0IMp9j3LHNmtvTyXuFupLVygBIHwY8woiZQ4j9I3MNAW4k+7teCFlftnh25eNmIZCWUH6rtj1wJq1PFUPiPpqNIO/Grz9F5RUDJ2DBvvO0eWeB1NjvnKFdWeiLxgp1ukxsrxbMSudPSjyFHjfEPbs+ub75lsDJCKqDQlIfeybPx+nI0cWcZeLLfl2R4bxWUM7yDSEiJa0LoUr5xz82jtmMBMxx61B/o6EEEAPxp+Afw0LtkqI6eum1djnpDkanq7OMYlusr3GXWEgKpoO7fZ42ktlt6RzGidoOMsGxN7VXVh77qCYBXUi97WMlAnncIgI1gGZODM0sMqlyFTvFDuK1VXQnAjm4ZQqGnPbKjRM4J76XJ+OBsGGxBsrsRkT6dwatJYvGwr9GEFzGJVNwqitu52RpDivGZ5mnQ2fPt44D0sh8gMdMM=
-  bucket: ly-archive.iotcloud.io
-  acl: public_read
-  on:
-    repo: bcdevices/ly10-system-rpi3
-    all_branches: true
+  - provider: s3
+    skip_cleanup: true
+    region: us-west-1
+    access_key_id: AKIAJHCM4JILUOCKQFXA
+    secret_access_key:
+      secure: uZZQYRpV1ZfRGqbokr4fNBDi5jD+kXG7bO19dcXuzEqCIjONCG1fA+j+bPlj+MIAIAwdlc5v8PP88KLpU/f/Hz7MX9b50NVheF+6LL+g0sKJRAn/1QpaZBXtCqGK4rfzIM8rO0Nl1dQ4cHqYAFJ3Q3BbMZ9apyxb4+Pgxa5mFFhPPlk2Z6YRF79bGojNWvbMFZlL3RDso7DsLR5TwxJBJn4pudCUDWpfT5tKqrZYr2RcVvV7lgQqimY+0IMp9j3LHNmtvTyXuFupLVygBIHwY8woiZQ4j9I3MNAW4k+7teCFlftnh25eNmIZCWUH6rtj1wJq1PFUPiPpqNIO/Grz9F5RUDJ2DBvvO0eWeB1NjvnKFdWeiLxgp1ukxsrxbMSudPSjyFHjfEPbs+ub75lsDJCKqDQlIfeybPx+nI0cWcZeLLfl2R4bxWUM7yDSEiJa0LoUr5xz82jtmMBMxx61B/o6EEEAPxp+Afw0LtkqI6eum1djnpDkanq7OMYlusr3GXWEgKpoO7fZ42ktlt6RzGidoOMsGxN7VXVh77qCYBXUi97WMlAnncIgI1gGZODM0sMqlyFTvFDuK1VXQnAjm4ZQqGnPbKjRM4J76XJ+OBsGGxBsrsRkT6dwatJYvGwr9GEFzGJVNwqitu52RpDivGZ5mnQ2fPt44D0sh8gMdMM=
+    bucket: ly-archive.iotcloud.io
+    acl: public_read
+    local_dir: dist
+    on:
+      repo: bcdevices/ly10-system-rpi3
+      all_branches: true
+  - provider: releases
+    skip_cleanup: true
+    file_glob: true
+    file: "$HOME/.nerves/dl/ly10_system_rpi3-portable*"
+    api_key:
+      secure: MUQoemj7qwWiAlw1kWU/iBhc2wXSBUS763Yl+1bL8jtw+eQ/gv9TJ6joN4ODo2H7BVTpewcJY4ZooiYzrLteELK5POyq6gMeyY8E/FNUxW/xyikMg5lmKfz2qtuod644BbtUGcT0Ex0eANBSGyQ/ENT4wTI8XwRgCOosr5HF6HJgWOn7FBrAi5etiAlNVYdX6vo1QwreAAX3Mnq2Wf/Y8qRypab7OXTws0Hr4InTcu2kSI6HgRTSj+gphhWOlMwBb7VU4OGSWxZqRflyDDUrgvqv/llBjlW1llbnHkVFbvMClcnahUnSqhXEq4eCjgnuGxIdM+rv+Tcewwq0nhrLGSeRlAsCwlhyD3nqTYcEqafWiHg+hT+L4/fz3j9mk4L10xs4vAHlHQwN6ybHWPGj100HOqVJkKYF9KMiKfXblyYtaysXXDCG2uZdsen7XvP+uN1l/RfVZaIZ+oAHAh6cTvQq77fgJNKCHZ10NZGuaha+Enc8zbtRVvSQiolAI6fqGdCP8b8gjDhvtkkeBTQB7ezW8laW+uJXatTanLjXMj2ghe3OdjrRkf+6ngD4UWg0HI/xC7WTdCUP3QI7NrLmg/FC5rhqQz6msRctiqjkaytA5WJLFe/jD0NLDJOsTQaAtb1COQYKAgLHWRddi9DJGUERDcOBvCDuzhJHlOZQx0I=
+    on:
+      repo: bcdevices/ly10-system-rpi3
+      all_branches: true
+      tags: true
 notifications:
   slack:
     secure: rLO0GQsAaXrIdJ4u2vJBoNDw5na7ijNRjEkeeR1QaYQWHeO8XqVu9SmCddXgaU2cyyoEjXgLsg4CBaTuNzhMO0RBg1k3eLK7/1zr6DGZZvi7p3GviqqNoWdKoieA+z/rDs0fwUFUeG6PfOq3c8g8vTjRhm4qmep9ZzMPyPhHZMlJbzqt8hUbFIKV2AXFclqpdgKObR4l+0Oc/9bXQYi4Rm20nUfQrwAFoyhE4t+18QMbAbiat3ZrkfMM+dIu1OJL23W6DjU8kQe8ewCDlpgyfwH9l9z49an1oxfx6phJVfM1/jQhRe9S1pIKrwzeLXQ6qkOapN4IkcJWRSC1sXjWyMlgcycDnA4u1vomJZ1aO8PWT/kMVnCEaJbCsWY86Avody97kmdC6ayxega26oBaXntNN+2C7Z07l3/DbHzqNCO7ts+s+gTseKk7zDo84jh+rIauGHy/7S2HCLtOKyTUOOnw3ZajzWGM/qhsYtvw/EyjaTPYN+JETQ0jHGsVhs0aI+e3NdhY+CR4Y91tWC/VUWgfmYPV0fr7ie7Pstz21QSwMCfM0d96PDVUKD7+CUg/2uZ6XRB+zYpZzMefvj8t6VsDL8cGtRKxxeitPzm2eQK8wHQwmqNY4RF2+Dw32/oUXU5uEFVegBkmkwbXraQwrAT8j95obCPmW4qgsk3EJ6A=

@@ -5,7 +5,7 @@ PRJTAG := ly10_system_rpi3
 MIX_TARGET := ly10_rpi3
 
 GIT_DESC := $(shell git describe --tags --always --dirty --match "v[0-9]*")
-VERSION_TAG := $(patsubst sc%,%,$(GIT_DESC))
+VERSION_TAG := $(patsubst v%,%,$(GIT_DESC))
 
 BASE_PATH := $(realpath .)
 DIST := $(BASE_PATH)/dist
