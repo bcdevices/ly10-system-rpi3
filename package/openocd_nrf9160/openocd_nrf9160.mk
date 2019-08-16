@@ -20,10 +20,17 @@ OPENOCD_NRF9160_CONF_OPTS += --disable-shared
 OPENOCD_NRF9160_CONF_OPTS += --enable-dummy
 OPENOCD_NRF9160_CONF_OPTS += --disable-werror
 
+define OPENOCD_NRF9160_BOOTSTRAP
+	rm -rf $(@D)/src/jtag/drivers/libjaylink
+	git -C $(@D)/src/jtag/drivers clone http://repo.or.cz/r/libjaylink.git
+endef
+
 define OPENOCD_NRF9160_TARGET_RENAME
 	mv $(TARGET_DIR)/usr/bin/openocd $(TARGET_DIR)/usr/bin/openocd_nrf9160
 endef
 
+
+OPENOCD_NRF9160_PRE_PATCH_HOOKS += OPENOCD_NRF9160_BOOTSTRAP
 OPENOCD_NRF9160_POST_INSTALL_TARGET_HOOKS += OPENOCD_NRF9160_TARGET_RENAME
 
 $(eval $(autotools-package))
