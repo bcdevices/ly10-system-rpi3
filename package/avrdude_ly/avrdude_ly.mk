@@ -4,8 +4,8 @@
 #
 ################################################################################
 
-AVRDUDE_LY_VERSION = RELEASE_6_3
-AVRDUDE_LY_SITE = svn://svn.savannah.nongnu.org/avrdude/tags/RELEASE_6_3
+AVRDUDE_LY_VERSION = 1429
+AVRDUDE_LY_SITE = svn://svn.savannah.nongnu.org/avrdude@1429
 AVRDUDE_LY_SITE_METHOD = svn
 AVRDUDE_LY_LICENSE = GPL-2.0+
 AVRDUDE_LY_LICENSE_FILES = avrdude/COPYING
