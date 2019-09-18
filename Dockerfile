@@ -86,6 +86,7 @@ RUN set -xe \
   libxdmcp6 libxext6 libxfixes3 libxi6 libxinerama1 libxkbcommon0 libxrandr2 \
   libxrender1 libxshmfence1 libxtst6 libxxf86vm1 notification-daemon \
   shared-mime-info x11-common xkb-data procps\
+  fakeroot \
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV ERLANG_OTP_VERSION=22.0.7-1
