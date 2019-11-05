@@ -38,6 +38,7 @@ RUN set -xe \
   automake \
   gzip \
   fakeroot \
+  subversion \
   &&  update-ca-certificates
 
 ENV ELIXIR_VERSION=1.9.2-otp-22
