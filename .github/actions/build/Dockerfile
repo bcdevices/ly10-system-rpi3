@@ -1,4 +1,4 @@
-FROM erlang:22.1.5
+FROM  nervesproject/nerves_system_br:1.9.4
 
 LABEL "com.github.actions.name"="Build System"
 LABEL "com.github.actions.description"="Build Nerves System"
@@ -9,39 +9,10 @@ LABEL "repositoty"="https://github.com/bcdevices/ly10-system-rpi3"
 LABEL "homepage"="https://github.com/bcdevices/ly10-system-rpi3"
 LABEL "maintainer"="Blue Clover Devices"
 
-#Setup locale
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y locales
-
-RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
-    dpkg-reconfigure --frontend=noninteractive locales && \
-    update-locale LANG=en_US.UTF-8
-
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
-
-ENV LANG=C.UTF-8
-RUN set -xe \
-  && apt-get update \
-  && apt-get -y install \
-  zip \
-  xz-utils \
-  cpio \
-  python \
-  bc \
-  subversion \
-  build-essential \
-  bash \
-  rsync \
-  git \
-  curl \
-  automake \
-  gzip \
-  fakeroot \
-  subversion \
-  &&  update-ca-certificates
-
 ENV ELIXIR_VERSION=1.9.2-otp-22
+
+RUN apt-get -y install -y \
+      subversion
 
 #Install Elixir
 RUN wget https://repo.hex.pm/builds/elixir/v$ELIXIR_VERSION.zip && \
