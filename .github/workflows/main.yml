@@ -1,0 +1,10 @@
+name: A workflow for building Nerves system
+on: push
+
+jobs:
+  build:
+    name:  Build Nerves system
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ./.github/actions/build
