@@ -36,4 +36,4 @@ jobs:
         if: contains(github.ref, 'tags')
         with:
           token: ${{secrets.GITHUB_TOKEN}}
-          files: ${{ HOME }}/.nerves/dl/ly10_system_rpi3-portable
+          files: /github/home/.nerves/dl/ly10_system_rpi3-portable
