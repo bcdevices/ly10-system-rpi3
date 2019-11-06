@@ -6,4 +6,5 @@ mix local.hex --force
 mix archive.install hex nerves_bootstrap 1.6.1 --force
 mix deps.get
 mix compile
+mkdir ./dist
 fakeroot mix nerves.artifact ly10_system_rpi3 --path ./dist
