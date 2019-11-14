@@ -9,7 +9,7 @@ LABEL "repositoty"="https://github.com/bcdevices/ly10-system-rpi3"
 LABEL "homepage"="https://github.com/bcdevices/ly10-system-rpi3"
 LABEL "maintainer"="Blue Clover Devices"
 
-ENV ELIXIR_VERSION=1.9.2-otp-22
+ENV ELIXIR_VERSION=1.9.4-otp-22
 
 RUN apt-get -y install -y \
       subversion
