@@ -89,10 +89,10 @@ RUN set -xe \
   fakeroot \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENV ERLANG_OTP_VERSION=22.0.7-1
+ENV ERLANG_OTP_VERSION=22.1.7-1
 ENV ERLANG_PKG="esl-erlang_${ERLANG_OTP_VERSION}~debian~stretch_amd64.deb"
 ENV ERLANG_URL="https://packages.erlang-solutions.com/erlang/debian/pool/${ERLANG_PKG}"
-ENV ELIXIR_VERSION=1.9.1-otp-22
+ENV ELIXIR_VERSION=1.9.4-otp-22
 
 
 # Install Erlang

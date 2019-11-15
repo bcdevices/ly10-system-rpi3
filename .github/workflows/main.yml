@@ -20,20 +20,10 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'us-west-1'
           SOURCE_DIR: 'dist'
-      - name: Create Release
-        if: contains(github.ref, 'tags')
-        id: create_release
-        uses: actions/create-release@v1.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
       - name: Upload Release Asset
         uses: meeDamian/github-release@1.0
         if: contains(github.ref, 'tags')
         with:
           token: ${{secrets.GITHUB_TOKEN}}
-          files: /github/home/.nerves/dl/ly10_system_rpi3-portable
+          files: /github/home/.nerves/dl/ly10_system_rpi3-portable*
+          gzip: false
