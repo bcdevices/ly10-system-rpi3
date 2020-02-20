@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-OPENOCD_PN7362_VERSION = 769278ba01e8784b3fd7a2d87d5663f561dc17ce
+OPENOCD_PN7362_VERSION = 3d2873d0631213e652465ee1d73521a749c6b73c
 OPENOCD_PN7362_SITE = git://github.com/bcdevices/openocd_pn7362
 OPENOCD_PN7362_GIT_SUBMODULES = YES
 
