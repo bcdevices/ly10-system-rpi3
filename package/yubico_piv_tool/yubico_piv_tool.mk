@@ -9,10 +9,10 @@ YUBICO_PIV_TOOL_SITE = git://github.com/Yubico/yubico-piv-tool.git
 YUBICO_PIV_TOOL_LICENSE = BSD
 YUBICO_PIV_TOOL_LICENSE_FILES = COPYING
 YUBICO_PIV_TOOL_CONF_ENV = HELP2MAN=true MAKEINFO=true
-YUBICO_PIV_TOOL_CONF_OPTS = no-installman
-YUBICO_PIV_TOOL_DEPENDENCIES = host-gengetopt host-openssl  host-cryptodev host-m4
+
+YUBICO_PIV_TOOL_DEPENDENCIES = host-gengetopt
+YUBICO_PIV_TOOL_DEPENDENCIES += host-openssl
+YUBICO_PIV_TOOL_DEPENDENCIES += host-cryptodev
+YUBICO_PIV_TOOL_DEPENDENCIES += host-m4
 
 YUBICO_PIV_TOOL_AUTORECONF = YES
-YUBICO_PIV_TOOL_DEPENDENCIES = libtool
-
-$(eval $(autotools-package))
