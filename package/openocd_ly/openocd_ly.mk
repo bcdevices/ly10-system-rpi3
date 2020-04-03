@@ -11,9 +11,12 @@ OPENOCD_LY_GIT_SUBMODULES = YES
 OPENOCD_LY_AUTORECONF = YES
 OPENOCD_LY_DEPENDENCIES = libusb-compat
 OPENOCD_LY_DEPENDENCIES += libftdi
+OPENOCD_LY_DEPENDENCIES += hidapi
 
 OPENOCD_LY_CONF_OPTS += --enable-ftdi
 OPENOCD_LY_CONF_OPTS += --disable-doxygen-html
+OPENOCD_LY_CONF_OPTS += --enable-cmsis-dap
+OPENOCD_LY_CONF_OPTS += --enable-jlink
 OPENOCD_LY_CONF_OPTS += --includedir=$(STAGING_DIR)/usr/include/libusb-1.0
 OPENOCD_LY_CONF_OPTS += --with-jim-shared=no
 OPENOCD_LY_CONF_OPTS += --disable-shared

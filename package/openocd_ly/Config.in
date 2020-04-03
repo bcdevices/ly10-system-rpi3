@@ -4,6 +4,7 @@ config BR2_PACKAGE_OPENOCD_LY
         select BR2_PACKAGE_LIBUSB
         select BR2_PACKAGE_LIBUSB_COMPAT
         select BR2_PACKAGE_LIBFTDI
+        select BR2_PACKAGE_HIDAPI
         help
            OpenOCD
 
