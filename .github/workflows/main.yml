@@ -8,6 +8,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
+      - name: Cache buildroot downloads
+        id: cache-downloads
+        uses: actions/cache@v1
+        with:
+          path: /home/runner/work/_temp/_github_home/.nerves/dl
+          key: buildroot-dl-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+          restore-keys: |
+            buidroot-dl-
       - name: Build
         uses: ./.github/actions/build
       - name: Upload S3
