@@ -13,8 +13,9 @@ jobs:
         uses: actions/cache@v1
         with:
           path: /home/runner/work/_temp/_github_home/.nerves/dl
-          key: buildroot-dl-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+          key: buildroot-cache-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
           restore-keys: |
+            buildroot-cache-
             buidroot-dl-
       - name: Build
         uses: ./.github/actions/build
