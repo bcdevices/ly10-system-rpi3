@@ -3,7 +3,7 @@
 # If these are non-proprietary, please consider contributing them back to
 # Nerves or Buildroot.
 source "$NERVES_DEFCONFIG_DIR/package/yubico_piv_tool/Config.in"
-#source "$NERVES_DEFCONFIG_DIR/package/avrdude_ly/Config.in"
+source "$NERVES_DEFCONFIG_DIR/package/avrdude_ly/Config.in"
 source "$NERVES_DEFCONFIG_DIR/package/openocd_ly/Config.in"
 source "$NERVES_DEFCONFIG_DIR/package/openocd_esp32/Config.in"
 source "$NERVES_DEFCONFIG_DIR/package/openocd_nrf9160/Config.in"
@@ -15,3 +15,4 @@ source "$NERVES_DEFCONFIG_DIR/package/openocd_cypress/Config.in"
 source "$NERVES_DEFCONFIG_DIR/package/python-pyocd/Config.in"
 source "$NERVES_DEFCONFIG_DIR/package/python-intervaltree/Config.in"
 source "$NERVES_DEFCONFIG_DIR/package/python-prettytable/Config.in"
+source "$NERVES_DEFCONFIG_DIR/package/python-intelhex/Config.in"
