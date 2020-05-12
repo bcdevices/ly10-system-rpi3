@@ -37,7 +37,6 @@ lint:
 	mix nerves.system.lint nerves_defconfig
 
 install-hex-rebar:
-	cd /tmp && \
 	mix local.hex --force && \
 	mix local.rebar --force
 
