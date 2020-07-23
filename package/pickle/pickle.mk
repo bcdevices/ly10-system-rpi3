@@ -32,13 +32,13 @@ endef
 define PICKLE_INSTALL_TARGET_CMDS
     $(INSTALL) -d -g0 -m0755 -o0 $(TARGET_DIR)/usr/bin
     $(INSTALL) -D -m 4755 $(@D)/pickle $(TARGET_DIR)/usr/bin
-    ln -sf $(TARGET_DIR)/pickle $(TARGET_DIR)/p12
-    ln -sf $(TARGET_DIR)/pickle $(TARGET_DIR)/p14
-    ln -sf $(TARGET_DIR)/pickle $(TARGET_DIR)/n14
-    ln -sf $(TARGET_DIR)/pickle $(TARGET_DIR)/p16
-    ln -sf $(TARGET_DIR)/pickle $(TARGET_DIR)/n16
-    ln -sf $(TARGET_DIR)/pickle $(TARGET_DIR)/p24
-    ln -sf $(TARGET_DIR)/pickle $(TARGET_DIR)/p32
+    ln -sf $(TARGET_DIR)/usr/bin/pickle $(TARGET_DIR)/usr/bin/p12
+    ln -sf $(TARGET_DIR)/usr/bin/pickle $(TARGET_DIR)/usr/bin/p14
+    ln -sf $(TARGET_DIR)/usr/bin/pickle $(TARGET_DIR)/usr/bin/n14
+    ln -sf $(TARGET_DIR)/usr/bin/pickle $(TARGET_DIR)/usr/bin/p16
+    ln -sf $(TARGET_DIR)/usr/bin/pickle $(TARGET_DIR)/usr/bin/n16
+    ln -sf $(TARGET_DIR)/usr/bin/pickle $(TARGET_DIR)/usr/bin/p24
+    ln -sf $(TARGET_DIR)/usr/bin/pickle $(TARGET_DIR)/usr/bin/p32
     $(INSTALL) -D -m 4755 $(@D)/pio $(TARGET_DIR)/usr/bin
     $(INSTALL) -D -m 4755 $(@D)/ptest $(TARGET_DIR)/usr/bin
     $(INSTALL) -D -m 4755 $(@D)/pctrl $(TARGET_DIR)/usr/bin
