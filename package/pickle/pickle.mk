@@ -4,7 +4,9 @@
 #
 ################################################################################
 
-#PICKLE_VERSION = 1429
+#PICKLE_VERSION = 1170
+#PICKLE_VERSION = 1170:fbbf5e9d1fd1
+PICKLE_VERSION = fbbf5e9d1fd1
 PICKLE_SITE = http://hg.kewl.org/pub/pickle
 PICKLE_SITE_METHOD = hg
 PICKLE_LICENSE = GPL-3.0
