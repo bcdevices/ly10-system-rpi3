@@ -20,7 +20,7 @@ PICKLE_DEPENDENCIES += libftdi
 endif
 
 define PICKLE_BUILD_CMDS
-    $(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D) all
+    $(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D) build
 endef
 
 #define PICKLE_INSTALL_STAGING_CMDS
