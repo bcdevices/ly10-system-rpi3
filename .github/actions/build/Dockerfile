@@ -1,4 +1,4 @@
-FROM nervesproject/nerves_system_br:1.12.2
+FROM nervesproject/nerves_system_br:1.13.0
 
 LABEL "com.github.actions.name"="Build System"
 LABEL "com.github.actions.description"="Build Nerves System"
@@ -28,6 +28,9 @@ WORKDIR /nerves-system
 
 # COPY
 COPY . /nerves-system
+
+RUN mkdir -p /root/local
+RUN mkdir -p /root/empty
 
 ADD entrypoint.sh /entrypoint.sh
 
