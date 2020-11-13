@@ -1,4 +1,4 @@
-FROM nervesproject/nerves_system_br:1.13.333
+FROM nervesproject/nerves_system_br:1.13.3
 
 LABEL "com.github.actions.name"="Build System"
 LABEL "com.github.actions.description"="Build Nerves System"
