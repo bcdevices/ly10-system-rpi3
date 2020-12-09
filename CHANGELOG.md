@@ -1,5 +1,55 @@
 # Changelog
 
+## v1.13.2
+
+This release includes a patch release update to
+[Buildroot 2020.08.2](http://lists.busybox.net/pipermail/buildroot/2020-November/296830.html).
+
+* Updated dependencies
+  * [nerves_system_br: bump to v1.13.5](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.13.5)
+  * [erlinit 1.9.0](https://github.com/nerves-project/erlinit/releases/tag/v1.9.0)
+
+* Improvements
+  * Switched source for built-in WiFi module firmware. This pulls in newer
+    firmware versions that were found to fix issues on the Raspberry Pi 4. It
+    may improve built-in WiFi on other Raspberry Pis.
+
+## v1.13.1
+
+The main change in this release is to bump the Linux kernel to 5.4. This follows
+the kernel update in the Raspberry Pi OS.
+
+If you have based a custom system off of this one, please inspect the
+`nerves_defconfig` for WiFi firmware changes. WiFi firmware is no longer being
+pulled from the `rpi-wifi-firmware` since that package is out of date.
+
+* Updated dependencies
+  * [nerves_system_br: bump to v1.13.4](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.13.4)
+  * [Erlang/OTP 23.1.4](https://erlang.org/download/OTP-23.1.4.README)
+  * [boardid 1.10.0](https://github.com/nerves-project/boardid/releases/tag/v1.10.0)
+
+* Improvements
+  * Enabled reproducible builds in Buildroot to remove some timestamp and build
+    path differences in firmware images. This helps delta firmware updates.
+  * The memory cgroup controller is no longer enabled by default. This was an
+    upstream change. As a result, the memory cgroup directory is no longer
+    mounted.
+
+## v1.13.0
+
+This release updates to [Buildroot
+2020.08](http://lists.busybox.net/pipermail/buildroot/2020-September/290797.html) and OTP 23.1.1.
+
+* Updated dependencies
+  * [nerves_system_br: bump to v1.13.2](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.13.2)
+  * [Erlang/OTP 23.1.1](https://erlang.org/download/OTP-23.1.1.README)
+  * [erlinit 1.8.0](https://github.com/nerves-project/erlinit/releases/tag/v1.8.0)
+  * [nerves 1.7.0](https://github.com/nerves-project/nerves/releases/tag/v1.7.0)
+
+* New features
+  * Added support for updating the root filesystem using firmware patches.
+    See the [firmware patch docs](https://hexdocs.pm/nerves/experimental-features.html#content) for more information.
+
 ## v1.12.2
 
 This release updates to [Buildroot
