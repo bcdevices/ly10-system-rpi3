@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-OPENOCD_RISCV_VERSION = a0e8edc4e70b2bc35de57f44717a289d9e651f6f
+OPENOCD_RISCV_VERSION = b8620764c09cbb05d8179fd5f520110fee114417
 OPENOCD_RISCV_SITE = git://github.com/riscv/riscv-openocd.git
 OPENOCD_RISCV_GIT_SUBMODULES = YES
 
