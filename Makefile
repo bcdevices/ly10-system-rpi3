@@ -44,11 +44,19 @@ install-dependencies:
 	MIX_TARGET=$(MIX_TARGET) mix deps.get
 
 install-nerves-bootstrap:
-	mix archive.install git https://github.com/nerves-project/nerves_bootstrap.git tag v1.8.1 --force
+	mix archive.install git https://github.com/nerves-project/nerves_bootstrap.git tag v1.10.1 --force
 
 .PHONY: build
 build: versions install-hex-rebar install-nerves-bootstrap install-dependencies build-prep
 	mix compile
+
+.PHONY: build-test-app
+build-test-app:
+	cd ./plt_test_app && MIX_TARGET=$(MIX_TARGET) mix do deps.get, firmware
+
+.PHONY: dist-test-app
+dist-test-app: build-test-app dist-prep
+	cp ./plt_test_app/_build/ly10_rpi3_dev/nerves/images/plt_test.fw $(DIST)/plt_test_$(VERSION_TAG).fw
 
 dist-prep:
 	-mkdir $(DIST)
