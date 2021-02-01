@@ -4,8 +4,6 @@ LABEL "com.github.actions.description"="Build Nerves System"
 LABEL "com.github.actions.icon"="package"
 LABEL "com.github.actions.color"="blue"
 
-LABEL "repository"="https://github.com/bcdevices/ly11-system-rpi4"
-LABEL "homepage"="https://github.com/bcdevices/ly11-system-rpi4"
 LABEL "maintainer"="Blue Clover Devices"
 
 ENV ELIXIR_VERSION=1.10.4-otp-23
