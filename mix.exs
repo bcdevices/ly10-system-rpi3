@@ -100,7 +100,6 @@ defmodule LY10SystemRpi3.MixProject do
 
   defp package_files do
     [
-      "package",
       "external.mk",
       "fwup_include",
       "rootfs_overlay",
