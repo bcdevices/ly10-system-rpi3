@@ -118,6 +118,7 @@ defmodule LY10SystemRpi3.MixProject do
       "post-build.sh",
       "post-build-symlinks.sh",
       "post-createfs.sh",
+      "post-fakeroot.sh",
       "ramoops.dts",
       "users_table.txt",
       "README.md",
