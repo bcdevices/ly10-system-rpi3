@@ -1,1 +1,2 @@
-debug -1 debug -1 - /root/home/debug /bin/false -
+debug -1 debug -1 - /root/home/debug /bin/ash -
+
