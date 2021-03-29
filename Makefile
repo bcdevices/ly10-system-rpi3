@@ -52,7 +52,7 @@ install-nerves-bootstrap:
 install-prep: install-hex-rebar install-nerves-bootstrap
 
 .PHONY: build
-build: versions  install-dependencies build-prep
+build: versions install-prep install-dependencies build-prep
 	mix compile
 
 .PHONY: build-test-app
