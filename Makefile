@@ -4,6 +4,8 @@ PRJTAG := ly10_system_rpi3
 
 MIX_TARGET := ly10_rpi3
 
+DOCKER_TARGET ?= dist
+
 GIT_DESC := $(shell git describe --tags --always --dirty --match "v[0-9]*")
 VERSION_TAG := $(patsubst v%,%,$(GIT_DESC))
 
@@ -46,13 +48,16 @@ install-dependencies:
 install-nerves-bootstrap:
 	mix archive.install git https://github.com/nerves-project/nerves_bootstrap.git tag v1.10.1 --force
 
+.PHONY: install-prep
+install-prep: install-hex-rebar install-nerves-bootstrap
+
 .PHONY: build
-build: versions install-hex-rebar install-nerves-bootstrap install-dependencies build-prep
+build: versions  install-dependencies build-prep
 	mix compile
 
 .PHONY: build-test-app
-build-test-app:
-	cd ./plt_test_app && MIX_TARGET=$(MIX_TARGET) mix do deps.get, firmware
+build-test-app: install-prep
+	cd ./plt_test_app && ./keys.sh &&  MIX_TARGET=$(MIX_TARGET) mix do deps.get, firmware
 
 .PHONY: dist-test-app
 dist-test-app: build-test-app dist-prep
@@ -75,7 +80,7 @@ dist: dist-prep build
 docker: clean
 	docker build --network=host -t "bcdevices/$(PRJTAG)" .
 	-docker rm -f "$(PRJTAG)"
-	docker run --name "$(PRJTAG)" --network=host -v $$HOME/.nerves/dl:/root/.nerves/dl -t "bcdevices/$(PRJTAG)" /bin/bash -c 'MIX_TARGET=ly10_rpi3 make dist'
+	docker run --name "$(PRJTAG)" --network=host -v $$HOME/.nerves/dl:/root/.nerves/dl -t "bcdevices/$(PRJTAG)" /bin/bash -c 'MIX_TARGET=ly10_rpi3 make $(DOCKER_TARGET)'
 	-docker cp "$(PRJTAG):/nerves-system/dist" $(BASE_PATH)
 
 all: build
