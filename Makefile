@@ -32,6 +32,7 @@ clean:
 versions:
 		@echo "GIT_DESC: $(GIT_DESC)"
 		@echo "VERSION_TAG: $(VERSION_TAG)"
+		@echo "PACKAGE_VERSION_NUM: $(PACKAGE_VERSION_NUM)"
 		@echo "$(ARTIFACT_DIR)"
 
 
