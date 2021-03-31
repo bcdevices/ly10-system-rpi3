@@ -123,7 +123,7 @@ defmodule LY10SystemRpi3.MixProject do
       "users_table.txt",
       "README.md",
       "VERSION",
-      "package-VERSION"
+      "PACKAGES-VERSION"
     ]
   end
 
