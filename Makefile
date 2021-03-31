@@ -15,6 +15,8 @@ DIST := $(BASE_PATH)/dist
 VERSION_FILE = VERSION
 VERSION_NUM = `cat $(VERSION_FILE)`
 
+PACKAGE_VERSION_NUM = $(shell cat PACKAGES-VERSION)
+
 ARTIFACT_DIR := $(BASE_PATH)/.nerves/artifacts/$(PRJTAG)-portable-$(VERSION_NUM)
 
 .PHONY: clean
@@ -23,6 +25,8 @@ clean:
 	-rm archive.log
 	-rm -rf .nerves/artifacts
 	-rm -rf _build
+	-rm -rf package-*
+	-rm package
 
 .PHONY: versions
 versions:
@@ -30,6 +34,15 @@ versions:
 		@echo "VERSION_TAG: $(VERSION_TAG)"
 		@echo "$(ARTIFACT_DIR)"
 
+
+package-%:
+	wget "https://github.com/bcdevices/ly10-buildroot-packages/releases/download/v$*/buildroot-packages-$*.tar.gz"
+	tar xzf "buildroot-packages-$*.tar.gz"
+	rm "buildroot-packages-$*.tar.gz"
+
+.PHONY: sync-packages
+sync-packages:  package-$(PACKAGE_VERSION_NUM)
+	ln -sf package-$(PACKAGE_VERSION_NUM) package
 
 build-prep:
 	-mkdir -p ./.nerves/artifacts
@@ -49,7 +62,7 @@ install-nerves-bootstrap:
 	mix archive.install git https://github.com/nerves-project/nerves_bootstrap.git tag v1.10.1 --force
 
 .PHONY: install-prep
-install-prep: install-hex-rebar install-nerves-bootstrap
+install-prep: install-hex-rebar install-nerves-bootstrap sync-packages
 
 .PHONY: build
 build: versions install-prep install-dependencies build-prep
