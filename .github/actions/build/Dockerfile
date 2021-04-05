@@ -1,4 +1,4 @@
-FROM nervesproject/nerves_system_br:1.13.5
+FROM nervesproject/nerves_system_br:1.15.0
 LABEL "com.github.actions.name"="Build System"
 LABEL "com.github.actions.description"="Build Nerves System"
 LABEL "com.github.actions.icon"="package"
@@ -6,7 +6,7 @@ LABEL "com.github.actions.color"="blue"
 
 LABEL "maintainer"="Blue Clover Devices"
 
-ENV ELIXIR_VERSION=1.10.4-otp-23
+ENV ELIXIR_VERSION=1.11.4-otp-23
 
 RUN apt-get update && \
       apt-get install -y \

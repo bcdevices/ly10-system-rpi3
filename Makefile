@@ -60,7 +60,7 @@ install-dependencies:
 	MIX_TARGET=$(MIX_TARGET) mix deps.get
 
 install-nerves-bootstrap:
-	mix archive.install git https://github.com/nerves-project/nerves_bootstrap.git tag v1.10.1 --force
+	mix archive.install git https://github.com/nerves-project/nerves_bootstrap.git tag v1.10.2 --force
 
 .PHONY: install-prep
 install-prep: install-hex-rebar install-nerves-bootstrap sync-packages
